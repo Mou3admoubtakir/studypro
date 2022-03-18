@@ -1,0 +1,57 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}
+Dashboard page
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <a href="{% url 'all_products_admin' %}"><button class="btn btn-success">Go to All products</button></a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="card col-md-5 mr-3">
+            <h4 class="text-center pt-2">Total revenue</h4>
+            <h1 class="text-center" style="color: green;">${{total_revenue}}</h1>
+        </div>
+        <div class="card col-md-5 mr-3">
+            <h4 class="text-center pt-2">Total Orders</h4>
+            <h1 class="text-center" style="color: green;">{{total_orders}}</h1>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-12 mt-5">
+            <table class="table table-hover table-triped">
+                <thead>
+                    <tr>
+                        <th scope="col">Order id</th>
+                        <th scope="col">items</th>
+                        <th scope="col">name customer</th>
+                        <th scope="col">complete</th>
+                        <th scope="col">transaction</th>
+                        <th scope="col">Liste product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>                   
+                        <th scope="col">{{order.id}}</th>
+                        <th scope="col">{{order.get_card_items}}</th>
+                        <th scope="col">{{order.customer}}</th>
+                        <th scope="col">{{order.complete}}</th>
+                        <th scope="col">{{order.transaction_id}}</th>
+                        <th>{{order.get_card_product}}</th>
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

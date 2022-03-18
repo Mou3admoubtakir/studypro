@@ -1,0 +1,41 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}
+view page
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="{{product.imageURL}}" class="card-img-top" width="200" height="300">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    <b>{{product.title|title}}</b>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    ${{product.price}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    ${{product.digital}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

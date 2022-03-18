@@ -1,0 +1,39 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Login page
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form method="POST">
+            {% csrf_token %}
+            
+            
+            <div class="form-row">
+              <div class="form-group col-md-6 text-center">
+                <label for="name">Username</label>
+                <input  type="text" class="form-control" id="name" name="username" placeholder="your Username">
+              </div>
+              
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 text-center">
+                <label for="email">password</label>
+                <input type="password" class="form-control" id="email" name="password" placeholder="">
+              </div>
+              
+            </div>
+
+            
+            <button type="submit" class="btn btn-primary text-center">Login</button>
+            {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}
